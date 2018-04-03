@@ -503,6 +503,7 @@ exports.create = function (options, callback) {
         }
 
         logger.warn('Request() error evaluating ' + method + '() call: ' + err);
+		next(); // blazekas:  Continue queue processing of request error, there could be multiple page processing going on in paralell
         callback(new HeadlessError('Request() error evaluating ' + method + '() call: ' + err));
       });
 
